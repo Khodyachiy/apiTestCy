@@ -48,7 +48,15 @@ describe('Test with backend', () => {
       expect(heartList[0]).to.contain('660')
       expect(heartList[1]).to.contain('235')
     })
-    
+
+    cy.fixture('articles').then(file => {
+      const articleLink = file.articles[1].slug
+      file.articles[1].favoritesCount = 236
+      cy.intercept('POST', 'https://conduit-api.bondaracademy.com/api/articles/'+articleLink+'/favorite')
+    })
+
+    cy.get('app-article-list button').eq(1).click().should('contain', '236')
+
   })
 
 })
