@@ -42,7 +42,7 @@ describe('Test with backend', () => {
     cy.intercept('POST', '**/articles', (req) => {
       expect(req.body.article.description).to.equal('This is a description');
       req.reply((res) => {
-        console.log('Response body:', res.body); // log for answer
+        console.log('Response body:', res.body); // logging
         if (res.body && res.body.article) {
           res.body.article.description = "This is a description 2";
         } else {
