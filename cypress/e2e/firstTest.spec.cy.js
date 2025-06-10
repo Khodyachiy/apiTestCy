@@ -117,6 +117,33 @@ describe('Test with backend', () => {
       }).then( response =>{
         expect(response.status).to.equal(201)
       })
+
+      cy.contains('Global Feed').click()
+      // These commands from the lesson aren't working on my side without articles updates
+      //cy.get('article-preview').first().click()
+      //cy.get('article-actions').contains('Delete Article').click()
+ 
+      cy.intercept('GET', '**/api/articles?limit=10&offset=0').as('getArticles');
+      cy.wait('@getArticles').then((interception) => {
+        expect(interception.response.statusCode).to.equal(200);
+        expect(interception.response.body.articles).to.have.length.greaterThan(0);
+      })
+      cy.contains(bodyRequest.article.title).should('be.visible');
+
+      cy.get('.article-preview').first().click();
+      cy.get('.article-actions')
+        .should('be.visible')
+        .contains('Delete Article')
+        .click();
+
+      cy.request({
+        url: 'https://conduit-api.bondaracademy.com/api/articles/Update-26692',
+        headers: { 'Authorization': 'Token '+token},
+        method: 'GET'
+      }).its('body').then( body => {
+        expect(body.articles[0].title).not.to.equal('2Update')
+      })
+
     })
   })
 
