@@ -88,13 +88,6 @@ describe('Test with backend', () => {
   })
 
   it.only('delete a new article in a global feed', () => {
-    
-    const userCredentials = {
-      "user": {
-        "email": "nick1985@test.com",
-        "password": "password"
-      }
-    }
 
     const bodyRequest = {
       "article": {
@@ -105,9 +98,7 @@ describe('Test with backend', () => {
       }
     }
 
-    cy.request('POST', 'https://conduit-api.bondaracademy.com/api/users/login', userCredentials)
-    .its('body').then(body => {
-      const token = body.user.token
+    cy.get('@token').then(token => {
 
       cy.request({
         url: 'https://conduit-api.bondaracademy.com/api/articles/',
@@ -141,7 +132,8 @@ describe('Test with backend', () => {
         headers: { 'Authorization': 'Token '+token},
         method: 'GET'
       }).its('body').then( body => {
-        expect(body.articles[0].title).not.to.equal('2Update')
+        expect(body.article).to.exist
+        expect(body.article.title).not.to.equal('2Update')
       })
 
     })

@@ -25,9 +25,31 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('loginToApplication', () => {
+
+    const userCredentials = {
+      "user": {
+        "email": "nick1985@test.com",
+        "password": "password"
+      }
+    }
+
+    cy.request('POST', 'https://conduit-api.bondaracademy.com/api/users/login', userCredentials)
+    .its('body').then(body => {
+      const token = body.user.token
+      cy.wrap(token).as('token')  
+      cy.visit('/', {
+        onBeforeLoad (win){
+            win.localStorage.setItem('jwtToken', token)
+
+        }
+      })
+    })  
+
+    //This pre-conditions were used before update 
+    /*
     cy.visit('/login')
     cy.get('[placeholder="Email"]').type('nick1985@test.com')
     cy.get('[placeholder="Password"]').type('password')
     cy.get('form').submit()
-    
+    */
 })
