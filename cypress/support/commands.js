@@ -28,8 +28,8 @@ Cypress.Commands.add('loginToApplication', () => {
 
     const userCredentials = {
       "user": {
-        "email": "nick1985@test.com",
-        "password": "password"
+        "email": Cypress.env("username"),
+        "password": Cypress.env("password")
       }
     }
 

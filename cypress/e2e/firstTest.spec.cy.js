@@ -101,7 +101,7 @@ describe('Test with backend', () => {
     cy.get('@token').then(token => {
 
       cy.request({
-        url: 'https://conduit-api.bondaracademy.com/api/articles/',
+        url: 'https://conduit-api.bondaracademy.com/+api/articles/',
         headers: { 'Authorization': 'Token '+token},
         method: 'POST',
         body: bodyRequest

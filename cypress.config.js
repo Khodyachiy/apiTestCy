@@ -3,6 +3,11 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   viewportHeight: 1000,
   viewportHeight: 1920,
+  video: false,
+  env: {
+    username: 'nick1985@test.com',
+    password: 'password'
+  },
 
   e2e: {
     setupNodeEvents(on, config) {
