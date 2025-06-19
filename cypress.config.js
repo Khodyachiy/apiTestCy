@@ -20,3 +20,22 @@ module.exports = defineConfig({
   },
 });
 
+/*
+{
+    "baseUrl": "https://conduit.bondaracademy.com/",
+    "ignoreTestFiles": "/examples/*",
+    "viewportHeight": 1080,
+    "viewportWidth": 1920,
+    "video": false,
+    "reporter": "cypress-multi-reporters",
+        "reporterOptions": {
+            "configFile": "reporter-config.json"
+        },
+    "env": {
+        "RETRIES": 2,
+        "username": "Niko85@test.com",
+        "password": "CyTest",
+        "apiUrl": "https://conduit.bondaracademy.com/"
+    }
+}
+*/
