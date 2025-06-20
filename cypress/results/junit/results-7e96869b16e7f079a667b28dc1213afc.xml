@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="19.503" tests="6" failures="2">
+  <testsuite name="Root Suite" timestamp="2025-06-19T12:57:30" tests="0" file="cypress\e2e\firstTest.spec.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Test with backend" timestamp="2025-06-19T12:57:30" tests="6" time="19.500" failures="2">
+    <testcase name="Test with backend first" time="2.506" classname="first">
+    </testcase>
+    <testcase name="Test with backend verify correct request and response" time="0.000" classname="verify correct request and response">
+      <failure message="Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `postArticles`. No request ever occurred.
+
+https://on.cypress.io/wait" type="CypressError"><![CDATA[CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `postArticles`. No request ever occurred.
+
+https://on.cypress.io/wait
+    at cypressErr (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:76205:18)
+    at Object.errByPath (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:76259:10)
+    at checkForXhr (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:137464:84)
+    at <unknown> (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:137490:28)
+    at tryCatcher (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1777:23)
+    at Promise.attempt.Promise.try (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:4285:29)
+    at whenStable (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:145846:68)
+    at <unknown> (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:145787:14)
+    at tryCatcher (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1777:23)
+    at Promise._settlePromiseFromHandler (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1489:31)
+    at Promise._settlePromise (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1546:18)
+    at Promise._settlePromise0 (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1591:10)
+    at Promise._settlePromises (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1671:18)
+    at Promise._fulfill (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1615:18)
+    at <unknown> (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:5420:46)
+From Your Spec Code:
+    at Object.proxyGetter [as get] (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:78967:22)
+    at exists (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:145028:26)
+    at elExists (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:145043:10)
+    at ensureExistence (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:145224:22)
+    at onFailFn (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:145253:53)]]></failure>
+    </testcase>
+    <testcase name="Test with backend intercepting and modifying the request and response" time="0.000" classname="intercepting and modifying the request and response">
+      <failure message="Cannot read properties of undefined (reading &apos;description&apos;)" type="TypeError"><![CDATA[TypeError: Cannot read properties of undefined (reading 'description')
+    at eval (webpack://api-cypress-test/./cypress/e2e/firstTest.spec.cy.js:42:32)
+    at <unknown> (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:139326:12)
+    at tryCatcher (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1777:23)
+    at Promise.attempt.Promise.try (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:4285:29)
+    at onResponse (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:139325:64)
+    at <unknown> (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:138793:28)
+    at tryCatcher (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1777:23)
+    at Promise.attempt.Promise.try (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:4285:29)
+    at $Cypress.<anonymous> (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:138756:59)
+    at EventEmitter.emit (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:143280:19)]]></failure>
+    </testcase>
+    <testcase name="Test with backend verify popular tags are displayed" time="1.211" classname="verify popular tags are displayed">
+    </testcase>
+    <testcase name="Test with backend verify global feed likes count" time="1.450" classname="verify global feed likes count">
+    </testcase>
+    <testcase name="Test with backend delete a new article in a global feed" time="3.137" classname="delete a new article in a global feed">
+    </testcase>
+  </testsuite>
+</testsuites>
