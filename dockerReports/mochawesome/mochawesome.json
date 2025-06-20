@@ -1,0 +1,210 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 4,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-06-20T15:57:57.335Z",
+    "end": "2025-06-20T15:58:21.036Z",
+    "duration": 23701,
+    "testsRegistered": 6,
+    "passPercent": 66.66666666666666,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c8265195-bc95-4fe8-afb5-651fa8a9a49f",
+      "title": "",
+      "fullFile": "cypress/e2e/firstTest.spec.cy.js",
+      "file": "cypress/e2e/firstTest.spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0c419dd7-83fb-41f6-bf70-72a3640396fc",
+          "title": "Test with backend",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "first",
+              "fullTitle": "Test with backend first",
+              "timedOut": null,
+              "duration": 3138,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.log('Yaaaay we logged in');",
+              "err": {},
+              "uuid": "b2a113aa-15b0-496c-8afb-235d5ef03263",
+              "parentUUID": "0c419dd7-83fb-41f6-bf70-72a3640396fc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify correct request and response",
+              "fullTitle": "Test with backend verify correct request and response",
+              "timedOut": null,
+              "duration": 8872,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('POST', 'https://conduit-api.bondaracademy.com/api/articles/new-26692').as('postArticles');\ncy.contains('New Article').click();\ncy.get('[formcontrolname=\"title\"]').type('This is the title');\ncy.get('[formcontrolname=\"description\"]').type('This is a description');\ncy.get('[formcontrolname=\"body\"]').type('This is a body of the article');\ncy.contains('Publish Article').click();\ncy.wait('@postArticles').its('response.statusCode').should('eq', 200);\ncy.wait('@postArticles').then(xhr => {\n  console.log(xhr);\n  expect(xhr.response.statusCode).to.equal(200);\n  expect(xhr.request.body.article.body).to.equal('This is a body of the article');\n  expect(xhr.response.body.article.description).to.equal('This is a description');\n});",
+              "err": {
+                "message": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `postArticles`. No request ever occurred.\n\nhttps://on.cypress.io/wait",
+                "estack": "CypressError: Timed out retrying after 5000ms: `cy.wait()` timed out waiting `5000ms` for the 1st request to the route: `postArticles`. No request ever occurred.\n\nhttps://on.cypress.io/wait\n    at cypressErr (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:76205:18)\n    at Object.errByPath (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:76259:10)\n    at checkForXhr (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:137464:84)\n    at <unknown> (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:137490:28)\n    at tryCatcher (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:4285:29)\n    at whenStable (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:145846:68)\n    at <unknown> (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:145787:14)\n    at tryCatcher (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1615:18)\n    at <unknown> (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:5420:46)\nFrom Your Spec Code:\n    at Object.proxyGetter [as get] (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:78967:22)\n    at exists (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:145028:26)\n    at elExists (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:145043:10)\n    at ensureExistence (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:145224:22)\n    at onFailFn (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:145253:53)",
+                "diff": null
+              },
+              "uuid": "cca8c1a0-ff9c-4143-a0b0-0ee0cfb3bd2d",
+              "parentUUID": "0c419dd7-83fb-41f6-bf70-72a3640396fc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "intercepting and modifying the request and response",
+              "fullTitle": "Test with backend intercepting and modifying the request and response",
+              "timedOut": null,
+              "duration": 3584,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "//cy.intercept('POST', '**/articles', (req) => {\n//  req.body.article.description = \"This is a description 2\"\n//}).as('postArticles')\ncy.intercept('POST', '**/articles', req => {\n  req.reply(res => {\n    expect(res.body.article.description).to.equal('This is a description');\n    res.body.article.description = \"This is a description 2\";\n  });\n}).as('postArticles');\ncy.contains('New Article').click();\ncy.get('[formcontrolname=\"title\"]').type('This is the title');\ncy.get('[formcontrolname=\"description\"]').type('This is a description');\ncy.get('[formcontrolname=\"body\"]').type('This is a body of the Article');\ncy.contains('Publish Article').click();\ncy.wait('@postArticles').then(xhr => {\n  console.log(xhr);\n  expect(xhr.response.statusCode).to.equal(201);\n  expect(xhr.request.body.article.body).to.equal('This is a body of the Article');\n  expect(xhr.response.body.article.description).to.equal('This is a description 2');\n});",
+              "err": {
+                "message": "TypeError: Cannot read properties of undefined (reading 'description')",
+                "estack": "TypeError: Cannot read properties of undefined (reading 'description')\n    at eval (webpack://api-cypress-test/./cypress/e2e/firstTest.spec.cy.js:42:32)\n    at <unknown> (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:139326:12)\n    at tryCatcher (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:4285:29)\n    at onResponse (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:139325:64)\n    at <unknown> (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:138793:28)\n    at tryCatcher (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:4285:29)\n    at $Cypress.<anonymous> (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:138756:59)\n    at EventEmitter.emit (https://conduit.bondaracademy.com/__cypress/runner/cypress_runner.js:143280:19)",
+                "diff": null
+              },
+              "uuid": "34a8aa2c-6bea-4be7-b408-2693d5dddbc4",
+              "parentUUID": "0c419dd7-83fb-41f6-bf70-72a3640396fc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify popular tags are displayed",
+              "fullTitle": "Test with backend verify popular tags are displayed",
+              "timedOut": null,
+              "duration": 1238,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.tag-list').should('contain', 'cypress').and('contain', 'automation').and('contain', 'testing');",
+              "err": {},
+              "uuid": "41753426-5e38-4281-bb85-539cd7e8e79e",
+              "parentUUID": "0c419dd7-83fb-41f6-bf70-72a3640396fc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify global feed likes count",
+              "fullTitle": "Test with backend verify global feed likes count",
+              "timedOut": null,
+              "duration": 2235,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('GET', 'https://conduit-api.bondaracademy.com/api/articles/feed*', {\n  \"articles\": [],\n  \"articlesCount\": 0\n});\ncy.intercept('GET', 'https://conduit-api.bondaracademy.com/api/articles*', {\n  fixture: 'articles.json'\n});\ncy.contains('Global Feed').click();\ncy.get('app-article-list button').then(heartList => {\n  expect(heartList[0]).to.contain('660');\n  expect(heartList[1]).to.contain('235');\n});\ncy.fixture('articles').then(file => {\n  const articleLink = file.articles[1].slug;\n  file.articles[1].favoritesCount = 236;\n  cy.intercept('POST', 'https://conduit-api.bondaracademy.com/api/articles/' + articleLink + '/favorite');\n});\ncy.get('app-article-list button').eq(1).click().should('contain', '236');",
+              "err": {},
+              "uuid": "12c934bc-73ed-41c7-b21d-ac6b0089c230",
+              "parentUUID": "0c419dd7-83fb-41f6-bf70-72a3640396fc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "delete a new article in a global feed",
+              "fullTitle": "Test with backend delete a new article in a global feed",
+              "timedOut": null,
+              "duration": 3895,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const bodyRequest = {\n  \"article\": {\n    \"title\": \"2Update\",\n    \"description\": \"2Up to New art\",\n    \"body\": \"2Up description\",\n    \"tagList\": []\n  }\n};\ncy.get('@token').then(token => {\n  cy.request({\n    url: 'https://conduit-api.bondaracademy.com/api/articles/',\n    headers: {\n      'Authorization': 'Token ' + token\n    },\n    method: 'POST',\n    body: bodyRequest\n  }).then(response => {\n    expect(response.status).to.equal(201);\n  });\n  cy.contains('Global Feed').click();\n  // These commands from the lesson aren't working on my side without articles updates\n  //cy.get('article-preview').first().click()\n  //cy.get('article-actions').contains('Delete Article').click()\n  cy.intercept('GET', '**/api/articles?limit=10&offset=0').as('getArticles');\n  cy.wait('@getArticles').then(interception => {\n    expect(interception.response.statusCode).to.equal(200);\n    expect(interception.response.body.articles).to.have.length.greaterThan(0);\n  });\n  cy.contains(bodyRequest.article.title).should('be.visible');\n  cy.get('.article-preview').first().click();\n  cy.get('.article-actions').should('be.visible').contains('Delete Article').click();\n  cy.request({\n    url: 'https://conduit-api.bondaracademy.com/api/articles/Update-26692',\n    headers: {\n      'Authorization': 'Token ' + token\n    },\n    method: 'GET'\n  }).its('body').then(body => {\n    expect(body.article).to.exist;\n    expect(body.article.title).not.to.equal('2Update');\n  });\n});",
+              "err": {},
+              "uuid": "9a94c723-628b-415e-be25-ed4948587210",
+              "parentUUID": "0c419dd7-83fb-41f6-bf70-72a3640396fc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b2a113aa-15b0-496c-8afb-235d5ef03263",
+            "41753426-5e38-4281-bb85-539cd7e8e79e",
+            "12c934bc-73ed-41c7-b21d-ac6b0089c230",
+            "9a94c723-628b-415e-be25-ed4948587210"
+          ],
+          "failures": [
+            "cca8c1a0-ff9c-4143-a0b0-0ee0cfb3bd2d",
+            "34a8aa2c-6bea-4be7-b408-2693d5dddbc4"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 22962,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
