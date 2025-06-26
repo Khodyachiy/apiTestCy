@@ -31,7 +31,7 @@ describe('Test with backend', () => {
 
   })
 
-  it('intercepting and modifying the request and response', () => {
+  it('intercepting and modifying the request and response', {browser: 'chrome'}, () => {
 
     //cy.intercept('POST', '**/articles', (req) => {
     //  req.body.article.description = "This is a description 2"

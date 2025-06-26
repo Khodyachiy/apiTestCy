@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-06-26T14:15:27.998Z",
+    "end": "2025-06-26T14:15:34.374Z",
+    "duration": 6376,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "28655026-58b4-4584-909c-e77912941bc4",
+      "title": "",
+      "fullFile": "cypress\\e2e\\testingAI.spec.cy.js",
+      "file": "cypress\\e2e\\testingAI.spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d5063e6c-34ab-449c-8814-26d4ad48920e",
+          "title": "Test with backend",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "delete a new article in a global feed",
+              "fullTitle": "Test with backend delete a new article in a global feed",
+              "timedOut": null,
+              "duration": 6291,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const userCredentials = {\n  user: {\n    email: \"nick1985@test.com\",\n    password: \"password\"\n  }\n};\nconst bodyRequest = {\n  article: {\n    title: \"2Update\",\n    description: \"2Up to New art\",\n    body: \"2Up description\",\n    tagList: []\n  }\n};\n// User's loggin\ncy.request('POST', 'https://conduit-api.bondaracademy.com/api/users/login', userCredentials).its('body').then(body => {\n  const token = body.user.token;\n  // Creating an article\n  cy.request({\n    url: 'https://conduit-api.bondaracademy.com/api/articles/',\n    headers: {\n      Authorization: 'Token ' + token\n    },\n    method: 'POST',\n    body: bodyRequest\n  }).then(response => {\n    expect(response.status).to.equal(201);\n  });\n  // Go to Global Feed\n  cy.contains('Global Feed').click();\n  // Waiting the update of articles\n  cy.intercept('GET', '**/api/articles?limit=10&offset=0').as('getArticles');\n  cy.wait('@getArticles').then(interception => {\n    expect(interception.response.statusCode).to.equal(200);\n    expect(interception.response.body.articles).to.have.length.greaterThan(0);\n  });\n  // Checking the article of the list\n  cy.contains(bodyRequest.article.title).should('be.visible');\n  // Click on the article\n  cy.get('.article-preview').first().click();\n  // Checking the artical on the page\n  cy.url().should('include', '/article/');\n  cy.contains(bodyRequest.article.title).should('be.visible');\n  // Delete the article\n  cy.get('.article-actions', {\n    timeout: 10000\n  }).should('be.visible').contains('Delete Article').click();\n  // Checking the article is removing\n  cy.contains('Global Feed').click();\n  cy.contains(bodyRequest.article.title).should('not.exist');\n});",
+              "err": {},
+              "uuid": "629172b9-03e9-4ef2-95b4-699338acc8e0",
+              "parentUUID": "d5063e6c-34ab-449c-8814-26d4ad48920e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "629172b9-03e9-4ef2-95b4-699338acc8e0"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6291,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
